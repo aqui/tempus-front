@@ -5,7 +5,6 @@ import { SigninComponent } from './_components/signin/signin.component';
 import { AuthGuard } from "./_services/auth.guard";
 import { LandingComponent } from './_components/landing/landing.component';
 import { UserComponent } from './_components/user/user.component';
-import { CompanyComponent } from './_components/landing/system/company/company.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
