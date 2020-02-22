@@ -10,7 +10,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LandingComponent } from './_components/landing/landing.component';
 import { UserComponent } from './_components/user/user.component';
 import { HeaderComponent } from './_components/header/header.component';
-import { CompanyComponent } from './_components/company/company.component';
+import { CompanyComponent } from './_components/landing/system/company/company.component';
+import { TodoListComponent } from './_components/landing/todo-list/todo-list.component';
+import { OperationCardsComponent } from './_components/landing/operation-cards/operation-cards.component';
+import { WorkAssignmentComponent } from './_components/landing/work-assignment/work-assignment.component';
+import { SystemComponent } from './_components/landing/system/system.component';
+import { KioskComponent } from './_components/landing/kiosk/kiosk.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { CompanyComponent } from './_components/company/company.component';
     LandingComponent,
     UserComponent,
     HeaderComponent,
-    CompanyComponent
+    CompanyComponent,
+    TodoListComponent,
+    OperationCardsComponent,
+    WorkAssignmentComponent,
+    SystemComponent,
+    KioskComponent
   ],
   imports: [
     BrowserModule,
