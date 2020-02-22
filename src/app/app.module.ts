@@ -16,6 +16,7 @@ import { OperationCardsComponent } from './_components/landing/operation-cards/o
 import { WorkAssignmentComponent } from './_components/landing/work-assignment/work-assignment.component';
 import { SystemComponent } from './_components/landing/system/system.component';
 import { KioskComponent } from './_components/landing/kiosk/kiosk.component';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { KioskComponent } from './_components/landing/kiosk/kiosk.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TabMenuModule
   ],
   providers: [
     {

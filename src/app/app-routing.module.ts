@@ -5,12 +5,14 @@ import { SigninComponent } from './_components/signin/signin.component';
 import { AuthGuard } from "./_services/auth.guard";
 import { LandingComponent } from './_components/landing/landing.component';
 import { UserComponent } from './_components/user/user.component';
+import { SystemComponent } from './_components/landing/system/system.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
   { path: 'log-in', component: SigninComponent },
   { path: 'landing', component: LandingComponent, canActivate: [AuthGuard] },
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard] }
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'system', component: SystemComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
