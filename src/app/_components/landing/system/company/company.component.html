@@ -1,1 +1,4 @@
-<p>company works!</p>
+<p-messages [(value)]="msgs"></p-messages>
+<p>Report: {{ company.report }}</p>
+<img src="assets/{{ company.logo }}" alt="">
+<p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>

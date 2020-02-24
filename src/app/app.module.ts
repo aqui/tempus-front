@@ -17,6 +17,10 @@ import { WorkAssignmentComponent } from './_components/landing/work-assignment/w
 import { SystemComponent } from './_components/landing/system/system.component';
 import { KioskComponent } from './_components/landing/kiosk/kiosk.component';
 import { TabMenuModule } from 'primeng/tabmenu';
+import {FileUploadModule} from 'primeng/fileupload';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { TabMenuModule } from 'primeng/tabmenu';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    TabMenuModule
+    TabMenuModule,
+    FileUploadModule,
+    MessagesModule,
+    MessageModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
