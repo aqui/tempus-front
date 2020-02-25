@@ -31,7 +31,6 @@ export class CompanyComponent {
 
   onUpload() {
     this.uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    this.companyService.postImage(this.uploadImageData);
     this.companyService.postImage(this.uploadImageData).subscribe((response: Response) => {
       if (response.status === 200) {
         this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Image uploaded successfully' };
