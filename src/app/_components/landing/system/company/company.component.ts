@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Company } from 'src/app/_models/company';
 import { CompanyService } from 'src/app/_services/system/company.service';
@@ -15,6 +14,7 @@ export class CompanyComponent {
   constructor(public companyService: CompanyService) {
     this.companyService.getCompany().subscribe(res => {
       this.company = res._embedded.companies[0];
+      this.imageUrl = this.imageBaseUrl + this.company.logo + "?" + Date.now();
     })
   }
 
@@ -22,6 +22,8 @@ export class CompanyComponent {
   selectedFile: File;
   msgs: Message[] = [];
   uploadImageData = new FormData();
+  imageBaseUrl: string = "http://localhost:8080/tempus-front-files/companylogo/";
+  imageUrl: string;
 
   public onFileChanged(event) {
     this.selectedFile = event.target.files[0];
@@ -33,6 +35,8 @@ export class CompanyComponent {
     this.companyService.postImage(this.uploadImageData).subscribe((response: Response) => {
       if (response.status === 200) {
         this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Image uploaded successfully' };
+        this.imageUrl = this.imageBaseUrl + this.company.logo + "?" + Date.now();
+        this.uploadImageData = new FormData();
       } else {
         this.msgs[0] = { severity: 'error', summary: 'Error', detail: 'Image not uploaded successfully' };
       }

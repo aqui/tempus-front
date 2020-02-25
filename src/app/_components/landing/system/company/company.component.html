@@ -1,6 +1,6 @@
 <p-messages [(value)]="msgs"></p-messages>
-<p>Report: {{ company.report }}</p>
-<img src="assets/companylogo/{{ company.logo }}" alt="">
+<p>Report: <input [(ngModel)]="company.report"></p>
+<img src="{{ imageUrl }}" alt="">
 
 <div class="container row">
     <div class="col-md-12">
