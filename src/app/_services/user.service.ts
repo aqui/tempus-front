@@ -1,6 +1,6 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { throwError, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, map } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';

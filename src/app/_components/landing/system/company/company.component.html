@@ -1,4 +1,25 @@
 <p-messages [(value)]="msgs"></p-messages>
 <p>Report: {{ company.report }}</p>
-<img src="assets/{{ company.logo }}" alt="">
-<p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+<img src="assets/companylogo/{{ company.logo }}" alt="">
+
+<div class="container row">
+    <div class="col-md-12">
+        <h2>Upload Image</h2>
+    </div>
+</div>
+
+<div class="container row">
+    <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="onUpload()" value="upload">
+    </div>
+</div>
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div>
