@@ -1,10 +1,13 @@
 <p-messages [(value)]="msgs"></p-messages>
+<h3>Company Information</h3>
+<hr />
 <p>Report: <input [(ngModel)]="company.report"></p>
+<p>Logo: </p>
 <img src="{{ imageUrl }}" alt="">
-
+<hr />
 <div class="container row">
     <div class="col-md-12">
-        <h2>Upload Image</h2>
+        <h4>Change Logo</h4>
     </div>
 </div>
 
@@ -13,13 +16,14 @@
         <input type="file" (change)="onFileChanged($event)">
 
     </div>
-    <div class="col-md-6">
-        <input type="button" (click)="onUpload()" value="upload">
-    </div>
 </div>
 <hr />
 <div class="container row">
     <div class="col-md-12">
         <div *ngIf=message>{{message}}</div>
     </div>
+</div>
+
+<div class="col-md-6">
+    <input type="button" (click)="onUpload()" value="Save">
 </div>

@@ -19,7 +19,7 @@ export class CompanyComponent {
   }
 
   public company = new Company;
-  selectedFile: File;
+  selectedFile: File = null;
   msgs: Message[] = [];
   uploadImageData = new FormData();
   imageBaseUrl: string = "http://localhost:8080/tempus-front-files/companylogo/";
@@ -30,15 +30,18 @@ export class CompanyComponent {
   }
 
   onUpload() {
-    this.uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    this.companyService.postImage(this.uploadImageData).subscribe((response: Response) => {
+    if(this.selectedFile != null) {
+      this.uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    }
+    this.companyService.saveCompany(this.uploadImageData, this.company).subscribe((response: Response) => {
       if (response.status === 200) {
-        this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Image uploaded successfully' };
+        this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Updated successfully' };
         this.imageUrl = this.imageBaseUrl + this.company.logo + "?" + Date.now();
         this.uploadImageData = new FormData();
-      } else {
-        this.msgs[0] = { severity: 'error', summary: 'Error', detail: 'Image not uploaded successfully' };
+      } 
+      else {
+        this.msgs[0] = { severity: 'error', summary: 'Error', detail: 'Not updated successfully' };
       }
-    })
+    });
   }
 }
