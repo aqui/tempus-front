@@ -30,18 +30,16 @@ export class CompanyComponent {
   }
 
   onUpload() {
+    this.companyService.updateCompany(this.company).subscribe((response: Response) => {
+      this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Company updated successfully' };
+    });
     if(this.selectedFile != null) {
       this.uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    }
-    this.companyService.saveCompany(this.uploadImageData, this.company).subscribe((response: Response) => {
-      if (response.status === 200) {
-        this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Updated successfully' };
+      this.companyService.updateLogo(this.uploadImageData).subscribe((response: Response) => {
         this.imageUrl = this.imageBaseUrl + this.company.logo + "?" + Date.now();
         this.uploadImageData = new FormData();
-      } 
-      else {
-        this.msgs[0] = { severity: 'error', summary: 'Error', detail: 'Not updated successfully' };
-      }
-    });
+        this.msgs[1] = { severity: 'info', summary: 'Success', detail: 'Logo updated successfully' };
+      });
+    }
   }
 }
