@@ -1,5 +1,5 @@
 export class Company {
     id: number;
-    report: string;
-    logo: string;
+    companyReport: string;
+    companyLogo: string;
 }

@@ -14,7 +14,7 @@ export class CompanyComponent {
   constructor(public companyService: CompanyService) {
     this.companyService.getCompany().subscribe(res => {
       this.company = res._embedded.companies[0];
-      this.imageUrl = this.imageBaseUrl + this.company.logo + "?" + Date.now();
+      this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
     })
   }
 
@@ -36,7 +36,7 @@ export class CompanyComponent {
     if(this.selectedFile != null) {
       this.uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
       this.companyService.updateLogo(this.uploadImageData).subscribe((response: Response) => {
-        this.imageUrl = this.imageBaseUrl + this.company.logo + "?" + Date.now();
+        this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
         this.uploadImageData = new FormData();
         this.msgs[1] = { severity: 'info', summary: 'Success', detail: 'Logo updated successfully' };
       });
