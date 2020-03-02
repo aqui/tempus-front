@@ -17,10 +17,15 @@ import { WorkAssignmentComponent } from './_components/landing/work-assignment/w
 import { SystemComponent } from './_components/landing/system/system.component';
 import { KioskComponent } from './_components/landing/kiosk/kiosk.component';
 import { TabMenuModule } from 'primeng/tabmenu';
-import {FileUploadModule} from 'primeng/fileupload';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
+import { FileUploadModule } from 'primeng/fileupload';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EquipmentComponent } from './_components/landing/system/equipment/equipment.component';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OperationCardsComponent,
     WorkAssignmentComponent,
     SystemComponent,
-    KioskComponent
+    KioskComponent,
+    EquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FileUploadModule,
     MessagesModule,
     MessageModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TableModule,
+    DialogModule,
+    ConfirmDialogModule,
+    ToastModule
   ],
   providers: [
     {

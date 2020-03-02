@@ -15,7 +15,7 @@ export class CompanyComponent {
     this.companyService.getCompany().subscribe(res => {
       this.company = res._embedded.companies[0];
       this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
-    })
+    });
   }
 
   public company = new Company;
