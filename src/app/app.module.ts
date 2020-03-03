@@ -27,6 +27,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
 import { DutyComponent } from './_components/landing/system/duty/duty.component';
+import { ShiftTypeComponent } from './_components/landing/system/shiftType/shiftType.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DutyComponent } from './_components/landing/system/duty/duty.component'
     SystemComponent,
     KioskComponent,
     EquipmentComponent,
-    DutyComponent
+    DutyComponent,
+    ShiftTypeComponent
   ],
   imports: [
     BrowserModule,

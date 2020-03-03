@@ -33,7 +33,7 @@ export class ShiftTypeService {
     return this.httpClient.put(this.endpoint+`${shiftType.id}`, shiftType).pipe(retry(1), catchError(this.handleError));
   }
 
-  deleteShiftTypet(id: number): Observable<any> {
+  deleteShiftType(id: number): Observable<any> {
     return this.httpClient.delete(this.endpoint+`${id}`).pipe(retry(1), catchError(this.handleError));
   }
 
