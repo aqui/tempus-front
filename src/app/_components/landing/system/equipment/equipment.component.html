@@ -1,4 +1,4 @@
-<p-messages [(value)]="msgs" life="1000"></p-messages>
+<p-toast></p-toast>
 <p-table [columns]="cols" [value]="equipments" selectionMode="single" [(selection)]="selectedEquipment" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="15">
     <ng-template pTemplate="caption">
         List of Equipments
@@ -51,4 +51,3 @@
         </div>
     </p-footer>
 </p-dialog>
-

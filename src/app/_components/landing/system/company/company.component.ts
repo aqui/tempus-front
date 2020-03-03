@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { Company } from 'src/app/_models/company';
 import { CompanyService } from 'src/app/_services/system/company.service';
-import { Message } from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css']
+  styleUrls: ['./company.component.css'],
+  providers: [MessageService]
 })
 
 export class CompanyComponent {
 
-  constructor(public companyService: CompanyService) {
+  constructor(public companyService: CompanyService, private messageService: MessageService) {
     this.companyService.getCompany().subscribe(res => {
       this.company = res._embedded.companies[0];
       this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
@@ -19,27 +20,20 @@ export class CompanyComponent {
   }
 
   public company = new Company;
-  selectedFile: File = null;
-  msgs: Message[] = [];
-  uploadImageData = new FormData();
+  uploadedFiles: any[] = [];
   imageBaseUrl: string = "http://localhost:8080/tempus-front-files/companylogo/";
   imageUrl: string;
 
-  public onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
+  onUpload(event) {
+    this.companyService.updateCompany(this.company).subscribe((response: Response) => {
+      this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Company info and logo updated' });
+    });
   }
 
-  onUpload() {
+  saveCompany(event) {
     this.companyService.updateCompany(this.company).subscribe((response: Response) => {
-      this.msgs[0] = { severity: 'info', summary: 'Success', detail: 'Company updated successfully' };
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Company updated' });
     });
-    if(this.selectedFile != null) {
-      this.uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-      this.companyService.updateLogo(this.uploadImageData).subscribe((response: Response) => {
-        this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
-        this.uploadImageData = new FormData();
-        this.msgs[1] = { severity: 'info', summary: 'Success', detail: 'Logo updated successfully' };
-      });
-    }
   }
 }
