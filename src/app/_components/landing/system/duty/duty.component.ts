@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Duty } from 'src/app/_models/duty';
+import { Duty } from 'src/app/_models/Duty';
 import { DutyService } from 'src/app/_services/system/duty.service';
 import { Message, MessageService } from 'primeng/api';
 

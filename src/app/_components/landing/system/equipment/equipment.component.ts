@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Equipment } from 'src/app/_models/equipment';
+import { Equipment } from 'src/app/_models/Equipment';
 import { EquipmentService } from 'src/app/_services/system/equipment.service';
 import { Message, MessageService } from 'primeng/api';
 

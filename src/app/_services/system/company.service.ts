@@ -3,7 +3,7 @@ import { throwError, Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, map, retry } from 'rxjs/operators';
-import { Company } from 'src/app/_models/company';
+import { Company } from 'src/app/_models/Company';
 
 @Injectable({
   providedIn: 'root'

@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
-import { Duty } from 'src/app/_models/Duty';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError, retry } from 'rxjs/operators';
+import { ShiftType } from 'src/app/_models/ShiftType';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DutyService {
+export class ShiftTypeService {
 
-  private endpoint = 'http://localhost:8080/api/duties/';
+  private endpoint = 'http://localhost:8080/api/shiftTypes/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getDutyList(): Observable<Duty[]> {
+  getShiftTypeList(): Observable<ShiftType[]> {
     return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.duties), catchError(this.handleError)
+      map(response => response._embedded.shiftTypes), catchError(this.handleError)
     );
   } 
 
-  getDuty(id: number): Observable<Duty[]> {
+  getShiftType(id: number): Observable<ShiftType[]> {
     return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.duties), catchError(this.handleError)
+      map(response => response._embedded.shiftTypes), catchError(this.handleError)
     );
   }
 
-  postDuty(duty: Duty): Observable<any> {
-    return this.httpClient.post(this.endpoint, duty).pipe(retry(1), catchError(this.handleError));
+  postShiftType(shiftType: ShiftType): Observable<any> {
+    return this.httpClient.post(this.endpoint, shiftType).pipe(retry(1), catchError(this.handleError));
   }
 
-  putDuty(duty: Duty): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${duty.id}`, duty).pipe(retry(1), catchError(this.handleError));
+  putShiftType(shiftType: ShiftType): Observable<any> {
+    return this.httpClient.put(this.endpoint+`${shiftType.id}`, shiftType).pipe(retry(1), catchError(this.handleError));
   }
 
-  deleteDuty(id: number): Observable<any> {
+  deleteShiftTypet(id: number): Observable<any> {
     return this.httpClient.delete(this.endpoint+`${id}`).pipe(retry(1), catchError(this.handleError));
   }
 
@@ -52,6 +52,6 @@ export class DutyService {
 
 interface GetResponse {
   _embedded: {
-    duties: Duty[];
+    shiftTypes: ShiftType[];
   }
 }

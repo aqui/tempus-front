@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Company } from 'src/app/_models/company';
+import { Company } from 'src/app/_models/Company';
 import { CompanyService } from 'src/app/_services/system/company.service';
-import { Message, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-company',

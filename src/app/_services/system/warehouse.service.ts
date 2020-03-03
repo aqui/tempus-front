@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
-import { Duty } from 'src/app/_models/Duty';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError, retry } from 'rxjs/operators';
+import { Warehouse } from 'src/app/_models/Warehouse';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DutyService {
+export class WarehouseService {
 
-  private endpoint = 'http://localhost:8080/api/duties/';
+  private endpoint = 'http://localhost:8080/api/warehouses/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getDutyList(): Observable<Duty[]> {
+  getWarehouseList(): Observable<Warehouse[]> {
     return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.duties), catchError(this.handleError)
+      map(response => response._embedded.warehouses), catchError(this.handleError)
     );
   } 
 
-  getDuty(id: number): Observable<Duty[]> {
+  getWarehouse(id: number): Observable<Warehouse[]> {
     return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.duties), catchError(this.handleError)
+      map(response => response._embedded.warehouses), catchError(this.handleError)
     );
   }
 
-  postDuty(duty: Duty): Observable<any> {
-    return this.httpClient.post(this.endpoint, duty).pipe(retry(1), catchError(this.handleError));
+  postWarehouse(warehouse: Warehouse): Observable<any> {
+    return this.httpClient.post(this.endpoint, warehouse).pipe(retry(1), catchError(this.handleError));
   }
 
-  putDuty(duty: Duty): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${duty.id}`, duty).pipe(retry(1), catchError(this.handleError));
+  putWarehouse(warehouse: Warehouse): Observable<any> {
+    return this.httpClient.put(this.endpoint+`${warehouse.id}`, warehouse).pipe(retry(1), catchError(this.handleError));
   }
 
-  deleteDuty(id: number): Observable<any> {
+  deleteWarehouse(id: number): Observable<any> {
     return this.httpClient.delete(this.endpoint+`${id}`).pipe(retry(1), catchError(this.handleError));
   }
 
@@ -52,6 +52,6 @@ export class DutyService {
 
 interface GetResponse {
   _embedded: {
-    duties: Duty[];
+    warehouses: Warehouse[];
   }
 }
