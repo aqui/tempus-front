@@ -8,6 +8,7 @@ import { UserComponent } from './_components/user/user.component';
 import { SystemComponent } from './_components/landing/system/system.component';
 import { CompanyComponent } from './_components/landing/system/company/company.component';
 import { EquipmentComponent } from './_components/landing/system/equipment/equipment.component';
+import { DutyComponent } from './_components/landing/system/duty/duty.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'system', component: SystemComponent, canActivate: [AuthGuard] },
   { path: 'system/company', component: CompanyComponent, canActivate: [AuthGuard] },
-  { path: 'system/equipment', component: EquipmentComponent, canActivate: [AuthGuard] }
+  { path: 'system/equipment', component: EquipmentComponent, canActivate: [AuthGuard] },
+  { path: 'system/duty', component: DutyComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

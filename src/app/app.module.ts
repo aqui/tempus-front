@@ -26,6 +26,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
+import { DutyComponent } from './_components/landing/system/duty/duty.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ToastModule} from 'primeng/toast';
     WorkAssignmentComponent,
     SystemComponent,
     KioskComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    DutyComponent
   ],
   imports: [
     BrowserModule,
