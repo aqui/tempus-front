@@ -29,6 +29,7 @@ import {ToastModule} from 'primeng/toast';
 import { DutyComponent } from './_components/landing/system/duty/duty.component';
 import { ShiftTypeComponent } from './_components/landing/system/shiftType/shiftType.component';
 import { WarehouseComponent } from './_components/landing/system/warehouse/warehouse.component';
+import { WorkTypeComponent } from './_components/landing/system/workType/workType.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { WarehouseComponent } from './_components/landing/system/warehouse/wareh
     EquipmentComponent,
     DutyComponent,
     ShiftTypeComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    WorkTypeComponent
   ],
   imports: [
     BrowserModule,

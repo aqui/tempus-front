@@ -11,6 +11,7 @@ import { EquipmentComponent } from './_components/landing/system/equipment/equip
 import { DutyComponent } from './_components/landing/system/duty/duty.component';
 import { ShiftTypeComponent } from './_components/landing/system/shiftType/shiftType.component';
 import { WarehouseComponent } from './_components/landing/system/warehouse/warehouse.component';
+import { WorkTypeComponent } from './_components/landing/system/workType/workType.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'system/equipment', component: EquipmentComponent, canActivate: [AuthGuard] },
   { path: 'system/duty', component: DutyComponent, canActivate: [AuthGuard] },
   { path: 'system/shiftType', component: ShiftTypeComponent, canActivate: [AuthGuard] },
-  { path: 'system/warehouse', component: WarehouseComponent, canActivate: [AuthGuard] }
+  { path: 'system/warehouse', component: WarehouseComponent, canActivate: [AuthGuard] },
+  { path: 'system/workType', component: WorkTypeComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
