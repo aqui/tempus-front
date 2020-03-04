@@ -21,15 +21,18 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EquipmentComponent } from './_components/landing/system/equipment/equipment.component';
+import { EquipmentComponent } from './_components/landing/system/parameter/equipment/equipment.component';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
-import { DutyComponent } from './_components/landing/system/duty/duty.component';
-import { ShiftTypeComponent } from './_components/landing/system/shiftType/shiftType.component';
-import { WarehouseComponent } from './_components/landing/system/warehouse/warehouse.component';
-import { WorkTypeComponent } from './_components/landing/system/workType/workType.component';
+import { DutyComponent } from './_components/landing/system/parameter/duty/duty.component';
+import { ShiftTypeComponent } from './_components/landing/system/parameter/shiftType/shiftType.component';
+import { WarehouseComponent } from './_components/landing/system/parameter/warehouse/warehouse.component';
+import { WorkTypeComponent } from './_components/landing/system/parameter/workType/workType.component';
+import { CodeTableComponent } from './_components/landing/system/parameter/codetable/codetable.component';
+import { HolidayTypeComponent } from './_components/landing/system/parameter/holidayType/holidayType.component';
+import { ParameterComponent } from './_components/landing/system/parameter/parameter.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { WorkTypeComponent } from './_components/landing/system/workType/workTyp
     DutyComponent,
     ShiftTypeComponent,
     WarehouseComponent,
-    WorkTypeComponent
+    WorkTypeComponent,
+    CodeTableComponent,
+    HolidayTypeComponent,
+    ParameterComponent
   ],
   imports: [
     BrowserModule,
