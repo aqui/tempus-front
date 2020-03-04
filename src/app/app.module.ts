@@ -33,6 +33,8 @@ import { WorkTypeComponent } from './_components/landing/system/parameter/workTy
 import { CodeTableComponent } from './_components/landing/system/parameter/codetable/codetable.component';
 import { HolidayTypeComponent } from './_components/landing/system/parameter/holidayType/holidayType.component';
 import { ParameterComponent } from './_components/landing/system/parameter/parameter.component';
+import { HolidayComponent } from './_components/landing/system/parameter/holiday/holiday.component';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { ParameterComponent } from './_components/landing/system/parameter/param
     WorkTypeComponent,
     CodeTableComponent,
     HolidayTypeComponent,
-    ParameterComponent
+    ParameterComponent,
+    HolidayComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { ParameterComponent } from './_components/landing/system/parameter/param
     TableModule,
     DialogModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    CalendarModule
   ],
   providers: [
     {

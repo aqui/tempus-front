@@ -1,0 +1,5 @@
+<p-toast></p-toast>
+<div *ngFor="let holiday of holidays">
+    <p-calendar [(ngModel)]="holiday.holidayDate"></p-calendar>
+    {{ holiday.holidayType.holidayTypeDescription }}
+</div>

@@ -15,6 +15,7 @@ import { WorkTypeComponent } from './_components/landing/system/parameter/workTy
 import { CodeTableComponent } from './_components/landing/system/parameter/codetable/codetable.component';
 import { HolidayTypeComponent } from './_components/landing/system/parameter/holidayType/holidayType.component';
 import { ParameterComponent } from './_components/landing/system/parameter/parameter.component';
+import { HolidayComponent } from './_components/landing/system/parameter/holiday/holiday.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'system/parameter/workType', component: WorkTypeComponent, canActivate: [AuthGuard] },
   { path: 'system/parameter', component: ParameterComponent, canActivate: [AuthGuard] },
   { path: 'system/parameter/codeTable', component: CodeTableComponent, canActivate: [AuthGuard] },
-  { path: 'system/parameter/holidayType', component: HolidayTypeComponent, canActivate: [AuthGuard] }
+  { path: 'system/parameter/holidayType', component: HolidayTypeComponent, canActivate: [AuthGuard] },
+  { path: 'system/parameter/holiday', component: HolidayComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
