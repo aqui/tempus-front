@@ -13,8 +13,8 @@ import { MessageService } from 'primeng/api';
 export class CompanyComponent {
 
   constructor(public companyService: CompanyService, private messageService: MessageService) {
-    this.companyService.getCompany().subscribe(res => {
-      this.company = res._embedded.companies[0];
+    this.companyService.getCompany().subscribe(result => {
+      this.company = result[0];
       this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
     });
   }
@@ -25,14 +25,16 @@ export class CompanyComponent {
   imageUrl: string;
 
   onUpload(event) {
-    this.companyService.updateCompany(this.company).subscribe((response: Response) => {
+    this.companyService.updateCompany(this.company).subscribe((response: any) => {
+      this.company = response;
       this.imageUrl = this.imageBaseUrl + this.company.companyLogo + "?" + Date.now();
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Company info and logo updated' });
     });
   }
 
   saveCompany(event) {
-    this.companyService.updateCompany(this.company).subscribe((response: Response) => {
+    this.companyService.updateCompany(this.company).subscribe((response: any) => {
+      this.company = response;
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Company updated' });
     });
   }

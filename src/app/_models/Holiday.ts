@@ -3,7 +3,7 @@ import { HolidayType } from './HolidayType';
 export class Holiday {
     id: number;
     holidayDate: Date;
-    holidayType: HolidayType;
+    holidayTypeId: HolidayType;
     created: Date;
     updated: Date;
 }

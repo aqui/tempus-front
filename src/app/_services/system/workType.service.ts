@@ -9,20 +9,16 @@ import { WorkType } from 'src/app/_models/WorkType';
 })
 export class WorkTypeService {
 
-  private endpoint = 'http://localhost:8080/api/workTypes/';
+  private endpoint = 'http://localhost:8080/api/worktype/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getWorkTypeList(): Observable<WorkType[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.workTypes), catchError(this.handleError)
-    );
+  getWorkTypeList(): Observable<any> {
+    return this.httpClient.get(this.endpoint);
   } 
 
-  getWorkType(id: number): Observable<WorkType[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.workTypes), catchError(this.handleError)
-    );
+  getWorkType(id: number): Observable<any> {
+    return this.httpClient.get(this.endpoint+`${id}`);
   }
 
   postWorkType(workType: WorkType): Observable<any> {
@@ -30,7 +26,7 @@ export class WorkTypeService {
   }
 
   putWorkType(workType: WorkType): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${workType.id}`, workType).pipe(retry(1), catchError(this.handleError));
+    return this.httpClient.put(this.endpoint, workType).pipe(retry(1), catchError(this.handleError));
   }
 
   deleteWorkType(id: number): Observable<any> {

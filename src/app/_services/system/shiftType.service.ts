@@ -9,20 +9,16 @@ import { ShiftType } from 'src/app/_models/ShiftType';
 })
 export class ShiftTypeService {
 
-  private endpoint = 'http://localhost:8080/api/shiftTypes/';
+  private endpoint = 'http://localhost:8080/api/shifttype/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getShiftTypeList(): Observable<ShiftType[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.shiftTypes), catchError(this.handleError)
-    );
+  getShiftTypeList(): Observable<any> {
+    return this.httpClient.get(this.endpoint);
   } 
 
-  getShiftType(id: number): Observable<ShiftType[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.shiftTypes), catchError(this.handleError)
-    );
+  getShiftType(id: number): Observable<any> {
+    return this.httpClient.get(this.endpoint+`${id}`);
   }
 
   postShiftType(shiftType: ShiftType): Observable<any> {
@@ -30,7 +26,7 @@ export class ShiftTypeService {
   }
 
   putShiftType(shiftType: ShiftType): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${shiftType.id}`, shiftType).pipe(retry(1), catchError(this.handleError));
+    return this.httpClient.put(this.endpoint, shiftType).pipe(retry(1), catchError(this.handleError));
   }
 
   deleteShiftType(id: number): Observable<any> {

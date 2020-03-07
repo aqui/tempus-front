@@ -6,6 +6,10 @@
             <p><strong>Name:</strong> {{ currentUser.name }}</p>
             <p><strong>Last Name:</strong> {{ currentUser.lastName }}</p>
             <p><strong>Email:</strong> {{ currentUser.email }}</p>
+            <p><strong>Roles:</strong></p>
+            <div *ngFor="let role of currentUser.roles">
+                {{ role.roleName }}
+            </div>
         </div>
     </div>
 </div>

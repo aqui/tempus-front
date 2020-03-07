@@ -9,20 +9,16 @@ import { HolidayType } from 'src/app/_models/HolidayType';
 })
 export class HolidayTypeService {
 
-  private endpoint = 'http://localhost:8080/api/holidayTypes/';
+  private endpoint = 'http://localhost:8080/api/holidaytype/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getHolidayTypeList(): Observable<HolidayType[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.holidayTypes), catchError(this.handleError)
-    );
+  getHolidayTypeList(): Observable<any> {
+    return this.httpClient.get(this.endpoint);
   } 
 
-  getHolidayType(id: number): Observable<HolidayType[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.holidayTypes), catchError(this.handleError)
-    );
+  getHolidayType(id: number): Observable<any> {
+    return this.httpClient.get(this.endpoint+`${id}`);
   }
 
   postHolidayType(holidayType: HolidayType): Observable<any> {
@@ -30,7 +26,7 @@ export class HolidayTypeService {
   }
 
   putHolidayType(holidayType: HolidayType): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${holidayType.id}`, holidayType).pipe(retry(1), catchError(this.handleError));
+    return this.httpClient.put(this.endpoint, holidayType).pipe(retry(1), catchError(this.handleError));
   }
 
   deleteHolidayType(id: number): Observable<any> {

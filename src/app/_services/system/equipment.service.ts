@@ -9,20 +9,16 @@ import { map, catchError, retry } from 'rxjs/operators';
 })
 export class EquipmentService {
 
-  private endpoint = 'http://localhost:8080/api/equipments/';
+  private endpoint = 'http://localhost:8080/api/equipment/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getEquipmentList(): Observable<Equipment[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.equipments), catchError(this.handleError)
-    );
+  getEquipmentList(): Observable<any> {
+    return this.httpClient.get(this.endpoint);
   } 
 
-  getEquipment(id: number): Observable<Equipment[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.equipments), catchError(this.handleError)
-    );
+  getEquipment(id: number): Observable<any> {
+    return this.httpClient.get(this.endpoint+`${id}`);
   }
 
   postEquipment(equipment: Equipment): Observable<any> {
@@ -30,7 +26,7 @@ export class EquipmentService {
   }
 
   putEquipment(equipment: Equipment): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${equipment.id}`, equipment).pipe(retry(1), catchError(this.handleError));
+    return this.httpClient.put(this.endpoint, equipment).pipe(retry(1), catchError(this.handleError));
   }
 
   deleteEquipment(id: number): Observable<any> {
@@ -47,11 +43,5 @@ export class EquipmentService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
-  }
-}
-
-interface GetResponse {
-  _embedded: {
-    equipments: Equipment[];
   }
 }

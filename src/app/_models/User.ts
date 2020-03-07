@@ -1,3 +1,5 @@
+import { Role } from './Role';
+
 export class User {
     id: number;
     username: string;
@@ -9,5 +11,5 @@ export class User {
     accountNonExpired: boolean;
     accountNonLocked: boolean;
     credentialsNonExpired: boolean;
-    roles: string[];
+    roles: Role[];
 }

@@ -9,20 +9,16 @@ import { Warehouse } from 'src/app/_models/Warehouse';
 })
 export class WarehouseService {
 
-  private endpoint = 'http://localhost:8080/api/warehouses/';
+  private endpoint = 'http://localhost:8080/api/warehouse/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getWarehouseList(): Observable<Warehouse[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.warehouses), catchError(this.handleError)
-    );
+  getWarehouseList(): Observable<any> {
+    return this.httpClient.get(this.endpoint);
   } 
 
-  getWarehouse(id: number): Observable<Warehouse[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.warehouses), catchError(this.handleError)
-    );
+  getWarehouse(id: number): Observable<any> {
+    return this.httpClient.get(this.endpoint+`${id}`);
   }
 
   postWarehouse(warehouse: Warehouse): Observable<any> {
@@ -30,7 +26,7 @@ export class WarehouseService {
   }
 
   putWarehouse(warehouse: Warehouse): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${warehouse.id}`, warehouse).pipe(retry(1), catchError(this.handleError));
+    return this.httpClient.put(this.endpoint, warehouse).pipe(retry(1), catchError(this.handleError));
   }
 
   deleteWarehouse(id: number): Observable<any> {

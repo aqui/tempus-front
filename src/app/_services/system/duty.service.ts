@@ -9,20 +9,16 @@ import { map, catchError, retry } from 'rxjs/operators';
 })
 export class DutyService {
 
-  private endpoint = 'http://localhost:8080/api/duties/';
+  private endpoint = 'http://localhost:8080/api/duty/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getDutyList(): Observable<Duty[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint).pipe(
-      map(response => response._embedded.duties), catchError(this.handleError)
-    );
+  getDutyList(): Observable<any> {
+    return this.httpClient.get(this.endpoint);
   } 
 
-  getDuty(id: number): Observable<Duty[]> {
-    return this.httpClient.get<GetResponse>(this.endpoint+`${id}`).pipe(
-      map(response => response._embedded.duties), catchError(this.handleError)
-    );
+  getDuty(id: number): Observable<any> {
+    return this.httpClient.get(this.endpoint+`${id}`);
   }
 
   postDuty(duty: Duty): Observable<any> {
@@ -30,7 +26,7 @@ export class DutyService {
   }
 
   putDuty(duty: Duty): Observable<any> {
-    return this.httpClient.put(this.endpoint+`${duty.id}`, duty).pipe(retry(1), catchError(this.handleError));
+    return this.httpClient.put(this.endpoint, duty).pipe(retry(1), catchError(this.handleError));
   }
 
   deleteDuty(id: number): Observable<any> {
@@ -47,11 +43,5 @@ export class DutyService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
-  }
-}
-
-interface GetResponse {
-  _embedded: {
-    duties: Duty[];
   }
 }

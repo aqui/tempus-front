@@ -16,12 +16,12 @@ export class CompanyService {
   constructor(private http: HttpClient, public router: Router) { }
 
   getCompany(): Observable<any> {
-    let api = `${this.endpoint}/api/companies/`;
+    let api = `${this.endpoint}/api/company/`;
     return this.http.get(api).pipe(map((response: Response) => { return response || {} }), catchError(this.handleError));
   }
 
   updateCompany(company: Company): Observable<any> {
-    let api = `${this.endpoint}/api/companies/${company.id}`;
+    let api = `${this.endpoint}/api/company/`;
     return this.http.put(api, company).pipe(retry(1), catchError(this.handleError));
   }
 
