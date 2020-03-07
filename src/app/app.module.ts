@@ -35,6 +35,7 @@ import { HolidayTypeComponent } from './_components/landing/system/parameter/hol
 import { ParameterComponent } from './_components/landing/system/parameter/parameter.component';
 import { HolidayComponent } from './_components/landing/system/parameter/holiday/holiday.component';
 import {CalendarModule} from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {CalendarModule} from 'primeng/calendar';
     DialogModule,
     ConfirmDialogModule,
     ToastModule,
-    CalendarModule
+    CalendarModule,
+    DropdownModule
   ],
   providers: [
     {

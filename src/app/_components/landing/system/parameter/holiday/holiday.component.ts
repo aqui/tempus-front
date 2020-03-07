@@ -15,18 +15,16 @@ import { HolidayType } from 'src/app/_models/HolidayType';
 export class HolidayComponent implements OnInit {
 
   holidays: Holiday[];
+  holidayTypes: HolidayType[];
   msgs: Message[] = [];
-  displayDialog: boolean;
-  selectedHoliday: Holiday;
-  newHoliday: boolean;
-  cols: any[];
-  holiday: Holiday;
-
+  clonedHolidays: { [s: string]: Holiday; } = {};
+  
   constructor(private holidayService: HolidayService, private holidayTypeService: HolidayTypeService, private messageService: MessageService) {
-    
+
   }
 
   ngOnInit() {
+    this.getHolidayTypeList();
     this.getHolidayList();
   }
 
@@ -34,7 +32,36 @@ export class HolidayComponent implements OnInit {
     this.holidayService.getHolidayList().subscribe(
       holidays => {
         this.holidays = holidays;
+        holidays.forEach(holiday => {
+          holiday.holidayDate = new Date(holiday.holidayDate);
+        });
       }
     )
+  }
+
+  getHolidayTypeList() {
+    this.holidayTypeService.getHolidayTypeList().subscribe(
+      holidayTypes => {
+        this.holidayTypes = holidayTypes;
+      }
+    )
+  }
+
+  onRowEditInit(holiday: Holiday) {
+    this.clonedHolidays[holiday.id] = { ...holiday };
+  }
+
+  onRowEditSave(holiday: Holiday, index: number) {
+      delete this.clonedHolidays[holiday.id];
+      this.holidayService.putHoliday(holiday).subscribe(response => {
+        this.holidays[index] = response;
+        this.holidays[index].holidayDate = new Date(this.holidays[index].holidayDate);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Holiday is updated' });
+      })
+  }
+
+  onRowEditCancel(holiday: Holiday, index: number) {
+    this.holidays[index] = this.clonedHolidays[holiday.id];
+    delete this.clonedHolidays[holiday.id];
   }
 }

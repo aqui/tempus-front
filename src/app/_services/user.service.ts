@@ -16,16 +16,7 @@ export class UserService {
   constructor(private http: HttpClient, public router: Router) { }
 
   getUser(): Observable<any> {
-    let api = `${this.endpoint}/api/users/${this.userId}`;
-    return this.http.get(api).pipe(map((res: Response) => {
-        return res || {}
-      }),
-      catchError(this.handleError)
-    )
-  }
-
-  getRoles(): Observable<any> {
-    let api = `${this.endpoint}/api/users/${this.userId}/roles`;
+    let api = `${this.endpoint}/api/user/${this.userId}`;
     return this.http.get(api).pipe(map((res: Response) => {
         return res || {}
       }),

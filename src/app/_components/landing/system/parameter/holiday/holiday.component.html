@@ -1,5 +1,39 @@
 <p-toast></p-toast>
-<div *ngFor="let holiday of holidays">
-    <p-calendar [(ngModel)]="holiday.holidayDate"></p-calendar>
-    {{ holiday.holidayType.holidayTypeDescription }}
-</div>
+<p-table [value]="holidays" dataKey="id" editMode="row">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Holiday Date</th>
+            <th>Holiday Type</th>
+            <th style="width:8em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="rowData">
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <p-calendar [(ngModel)]="rowData.holidayDate" required></p-calendar>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        <p-calendar [(ngModel)]="rowData.holidayDate" disabled></p-calendar>
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <p-dropdown optionLabel="holidayTypeDescription" [filter]="true" [options]="holidayTypes" [(ngModel)]="rowData.holidayType" [style]="{'width':'100%'}"></p-dropdown>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{ rowData.holidayType.holidayTypeDescription }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td style="text-align:center">
+                <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+                <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData, ri)"></button>
+                <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
