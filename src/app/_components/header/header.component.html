@@ -1,4 +1,4 @@
-<nav *ngIf="this.authService.isLoggedIn" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav *ngIf="this.authService.isLoggedIn" style="padding-top:0px !important; padding-bottom:0px !important;" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" routerLink="/landing">
         <h3 class="text-center">TEMPUS <i class="fa fa-clock-o" aria-hidden="true"></i></h3>
     </a>
@@ -13,10 +13,10 @@
             </li>
         </ul>
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a class="navbar-brand" class="btn btn-primary fa fa-user" routerLink="/user/"> Profile</a>
+            <a style="margin-right: 0.5em;" class="navbar-brand" class="btn btn-primary fa fa-user" routerLink="/user/"> Profile</a>
         </div>
         <div class="btn-group" role="group" aria-label="Basic example">
-            <button (click)="logout()" type="button" class="btn btn-danger fa fa-sign-out"> Logout</button>
+            <button style="margin-right: 0.5em;" (click)="logout()" type="button" class="btn btn-danger fa fa-sign-out"> Logout</button>
         </div>
     </div>
 </nav>
